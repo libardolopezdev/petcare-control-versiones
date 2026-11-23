@@ -1,0 +1,719 @@
+/* ==========================================================================
+   PetCare - Componentes
+   Cada bloque corresponde a un componente del UI Kit de Figma
+   (átomos, moléculas y organismos). Todo valor sale de tokens.css.
+   ========================================================================== */
+
+/* ==========================================================================
+   ORGANISMO: Barra de navegación (escritorio, tablet y celular)
+   ========================================================================== */
+.barra {
+    background: var(--color-bosque-900);
+    color: var(--color-texto-sobre-bosque);
+}
+
+.barra__interior {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    min-height: 64px;
+    padding-block: var(--espacio-3);
+}
+
+.barra__menu {
+    display: none;
+    /* Oculto en celular hasta abrirlo */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.barra__menu a {
+    display: block;
+    padding: var(--espacio-2) 0;
+    color: var(--color-texto-sobre-bosque);
+    font-weight: var(--peso-boton);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+
+.barra__menu a:hover {
+    border-bottom-color: var(--color-bosque-700);
+}
+
+.barra__menu a[aria-current="page"] {
+    border-bottom-color: var(--color-hoja-500);
+    /* Indicador de la opción activa */
+}
+
+.barra__usuario {
+    display: none;
+    font-weight: var(--peso-boton);
+}
+
+.barra__boton-menu {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espacio-2);
+    min-height: 44px;
+    padding: var(--espacio-2) var(--espacio-3);
+    background: transparent;
+    border: var(--borde-fino) solid rgba(234, 243, 238, 0.4);
+    border-radius: var(--radio-pildora);
+    color: var(--color-texto-sobre-bosque);
+    font-weight: var(--peso-boton);
+    cursor: pointer;
+}
+
+.barra__boton-menu svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Menú abierto en celular */
+.barra.abierta .barra__menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+    width: 100%;
+    padding-bottom: var(--espacio-4);
+}
+
+.barra.abierta .barra__interior {
+    flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+    .barra__boton-menu {
+        display: none;
+    }
+
+    .barra__menu,
+    .barra.abierta .barra__menu {
+        display: flex;
+        flex-direction: row;
+        gap: var(--espacio-3);
+        width: auto;
+        padding-bottom: 0;
+    }
+
+    .barra__menu a {
+        font-size: 0.9375rem;
+        /* 15 px para que quepan los 5 enlaces en tablet */
+    }
+}
+
+@media (min-width: 1280px) {
+
+    .barra__menu,
+    .barra.abierta .barra__menu {
+        gap: var(--espacio-8);
+    }
+
+    .barra__menu a {
+        font-size: var(--texto-cuerpo);
+    }
+
+    .barra__usuario {
+        display: block;
+        /* El nombre solo se muestra en escritorio */
+    }
+}
+
+/* ==========================================================================
+   Logo (símbolo + nombre)
+   ========================================================================== */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espacio-3);
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo__simbolo {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-hoja-500);
+    color: var(--color-bosque-900);
+    flex: none;
+}
+
+.logo__simbolo svg {
+    width: 22px;
+    height: 22px;
+}
+
+.logo__nombre {
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-titulo);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.logo--claro .logo__simbolo {
+    background: var(--color-hoja-700);
+    color: var(--color-neutral-0);
+}
+
+.logo--claro .logo__nombre {
+    color: var(--color-bosque-900);
+}
+
+/* ==========================================================================
+   ÁTOMO: Botón (Principal, Secundario, Peligro)
+   ========================================================================== */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-2);
+    min-height: 48px;
+    /* Fácil de tocar en celular */
+    padding: var(--espacio-3) var(--espacio-6);
+    border: var(--borde-grueso) solid transparent;
+    border-radius: var(--radio-pildora);
+    font-size: var(--texto-boton);
+    font-weight: var(--peso-boton);
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.boton--principal {
+    background: var(--color-hoja-700);
+    color: var(--color-neutral-0);
+}
+
+.boton--principal:hover {
+    background: var(--color-bosque-700);
+}
+
+.boton--secundario {
+    background: transparent;
+    border-color: var(--color-hoja-700);
+    color: var(--color-hoja-700);
+}
+
+.boton--secundario:hover {
+    background: var(--color-menta-100);
+    color: var(--color-bosque-900);
+}
+
+.boton--peligro {
+    background: transparent;
+    border-color: var(--color-estado-error);
+    color: var(--color-estado-error);
+}
+
+.boton--peligro:hover {
+    background: var(--color-neutral-100);
+}
+
+.boton:disabled,
+.boton[aria-disabled="true"] {
+    background: var(--color-neutral-300);
+    border-color: var(--color-neutral-300);
+    color: var(--color-neutral-700);
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+.boton--ancho {
+    width: 100%;
+}
+
+.boton--pequeno {
+    min-height: 40px;
+    padding: var(--espacio-2) var(--espacio-4);
+}
+
+/* ==========================================================================
+   ÁTOMO: Campo de texto (normal, activo, error, deshabilitado)
+   ========================================================================== */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-2);
+}
+
+.campo__etiqueta {
+    font-size: 0.875rem;
+    font-weight: var(--peso-boton);
+    color: var(--color-tinta-900);
+}
+
+.campo__entrada {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--espacio-3) var(--espacio-4);
+    background: var(--color-neutral-0);
+    border: var(--borde-fino) solid var(--color-neutral-300);
+    border-radius: var(--radio-sm);
+    color: var(--color-tinta-900);
+}
+
+.campo__entrada::placeholder {
+    color: var(--color-neutral-500);
+}
+
+.campo__entrada:focus {
+    outline: none;
+    border: var(--borde-grueso) solid var(--color-hoja-700);
+    padding: calc(var(--espacio-3) - 1px) calc(var(--espacio-4) - 1px);
+}
+
+.campo__entrada:disabled {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-500);
+}
+
+.campo--error .campo__entrada {
+    border: var(--borde-grueso) solid var(--color-estado-error);
+    padding: calc(var(--espacio-3) - 1px) calc(var(--espacio-4) - 1px);
+}
+
+.campo__error {
+    font-size: 0.8125rem;
+    color: var(--color-estado-error);
+}
+
+/* ==========================================================================
+   ÁTOMO: Chip de estado
+   ========================================================================== */
+.chip {
+    display: inline-block;
+    padding: 2px 10px;
+    border: var(--borde-grueso) solid currentColor;
+    border-radius: var(--radio-pildora);
+    font-size: 0.8125rem;
+    font-weight: var(--peso-boton);
+    white-space: nowrap;
+}
+
+.chip--pendiente {
+    color: var(--color-estado-alerta);
+}
+
+.chip--confirmada {
+    color: var(--color-hoja-700);
+}
+
+.chip--atendida {
+    color: var(--color-estado-exito);
+}
+
+.chip--rechazada {
+    color: var(--color-estado-error);
+}
+
+/* ==========================================================================
+   ÁTOMO: Filtro de categoría
+   ========================================================================== */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+}
+
+.filtro {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espacio-2);
+    min-height: 40px;
+    padding: var(--espacio-2) var(--espacio-4);
+    background: var(--color-neutral-0);
+    border: var(--borde-fino) solid var(--color-neutral-300);
+    border-radius: var(--radio-pildora);
+    font-size: 0.875rem;
+    font-weight: var(--peso-boton);
+    color: var(--color-tinta-900);
+    cursor: pointer;
+}
+
+.filtro svg {
+    width: 18px;
+    height: 18px;
+}
+
+.filtro[aria-pressed="true"] {
+    background: var(--color-bosque-900);
+    border-color: var(--color-bosque-900);
+    color: var(--color-neutral-0);
+}
+
+/* ==========================================================================
+   ÁTOMO: Franja horaria (disponible, seleccionada, ocupada)
+   ========================================================================== */
+.franjas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+}
+
+.franja {
+    width: 112px;
+    min-height: 48px;
+    background: var(--color-neutral-0);
+    border: var(--borde-fino) solid var(--color-hoja-700);
+    border-radius: var(--radio-sm);
+    color: var(--color-hoja-700);
+    font-weight: var(--peso-boton);
+    cursor: pointer;
+}
+
+.franja[aria-pressed="true"] {
+    background: var(--color-hoja-700);
+    color: var(--color-neutral-0);
+}
+
+.franja:disabled {
+    background: var(--color-neutral-100);
+    border-color: var(--color-neutral-300);
+    color: var(--color-neutral-500);
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   ÁTOMO: Huella de servicio (atendido / pendiente)
+   ========================================================================== */
+.huella {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacio-1);
+    width: 72px;
+    font-size: 0.8125rem;
+    font-weight: var(--peso-boton);
+    text-transform: uppercase;
+}
+
+.huella__dibujo {
+    position: relative;
+    width: 44px;
+    height: 44px;
+}
+
+.huella__dibujo svg {
+    width: 44px;
+    height: 44px;
+    transform: rotate(-8deg);
+}
+
+.huella__chulo {
+    position: absolute;
+    right: -6px;
+    bottom: -2px;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: currentColor;
+    border: 2px solid var(--color-neutral-0);
+}
+
+.huella__chulo svg {
+    width: 12px;
+    height: 12px;
+    color: var(--color-neutral-0);
+    transform: none;
+}
+
+.huella--verde {
+    color: var(--color-estado-exito);
+}
+
+.huella--violeta {
+    color: var(--color-huella-violeta);
+}
+
+.huella--roja {
+    color: var(--color-huella-roja);
+}
+
+.huella--pendiente {
+    color: var(--color-neutral-500);
+    text-transform: none;
+}
+
+/* ==========================================================================
+   Caja (superficie blanca para secciones)
+   ========================================================================== */
+.caja {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-4);
+    padding: var(--espacio-6);
+    background: var(--color-neutral-0);
+    border: var(--borde-fino) solid var(--color-neutral-300);
+    border-radius: var(--radio-md);
+}
+
+/* Resumen de 3 datos clave */
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* 3 datos en fila en todos los tamaños */
+    gap: var(--espacio-2);
+}
+
+.resumen__dato {
+    padding: var(--espacio-3);
+    font-size: 0.875rem;
+    background: var(--color-neutral-0);
+    border: var(--borde-fino) solid var(--color-neutral-300);
+    border-radius: var(--radio-md);
+}
+
+.resumen__numero {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-titulo);
+    font-size: 2rem;
+    line-height: 1.1;
+    color: var(--color-bosque-900);
+    font-variant-numeric: tabular-nums;
+}
+
+.resumen__dato--destacado {
+    background: var(--color-menta-100);
+    border-color: var(--color-hoja-700);
+}
+
+@media (min-width: 768px) {
+    .resumen {
+        gap: var(--espacio-4);
+    }
+
+    .resumen__dato {
+        padding: var(--espacio-4) var(--espacio-6);
+        font-size: var(--texto-cuerpo);
+    }
+}
+
+/* ==========================================================================
+   MOLÉCULA: Tarjeta de proveedor
+   ========================================================================== */
+.tarjeta-proveedor {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    align-items: center;
+    gap: var(--espacio-4);
+    padding: var(--espacio-4);
+    background: var(--color-neutral-0);
+    border: var(--borde-fino) solid var(--color-neutral-300);
+    border-radius: var(--radio-md);
+    box-shadow: var(--sombra-suave);
+}
+
+.tarjeta-proveedor__foto {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-menta-100);
+    color: var(--color-bosque-900);
+    font-weight: var(--peso-boton);
+}
+
+.tarjeta-proveedor__nombre {
+    font-weight: var(--peso-boton);
+}
+
+.tarjeta-proveedor__categoria {
+    font-size: 0.8125rem;
+    font-weight: var(--peso-boton);
+    color: var(--color-hoja-700);
+}
+
+.tarjeta-proveedor__detalle {
+    font-size: 0.875rem;
+    color: var(--color-neutral-700);
+}
+
+.tarjeta-proveedor .boton {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+    .tarjeta-proveedor {
+        grid-template-columns: 56px minmax(0, 1fr) auto;
+    }
+
+    .tarjeta-proveedor .boton {
+        grid-column: auto;
+    }
+}
+
+/* ==========================================================================
+   MOLÉCULA: Tarjeta de mascota (con placa)
+   ========================================================================== */
+.tarjeta-mascota {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espacio-4);
+    padding: var(--espacio-4);
+    background: var(--color-neutral-0);
+    border: var(--borde-fino) solid var(--color-neutral-300);
+    border-radius: var(--radio-md);
+}
+
+.placa {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--color-hoja-700);
+    border: var(--borde-grueso) solid var(--color-bosque-900);
+    color: var(--color-neutral-0);
+    font-weight: var(--peso-boton);
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+}
+
+.tarjeta-mascota__info {
+    flex: 1;
+    min-width: 140px;
+}
+
+/* ==========================================================================
+   MOLÉCULA: Ticket de próxima cita
+   ========================================================================== */
+.ticket {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    background: var(--color-menta-100);
+    border: var(--borde-grueso) solid var(--color-bosque-700);
+    border-radius: var(--radio-md);
+}
+
+.ticket__datos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+    padding: var(--espacio-4) var(--espacio-6);
+}
+
+.ticket__etiqueta {
+    font-size: 0.8125rem;
+    color: var(--color-neutral-700);
+}
+
+.ticket__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espacio-3);
+    padding: var(--espacio-4) var(--espacio-6);
+    border-top: var(--borde-grueso) dashed var(--color-bosque-700);
+}
+
+@media (min-width: 768px) {
+    .ticket {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .ticket__acciones {
+        flex-direction: column;
+        justify-content: center;
+        border-top: 0;
+        border-left: var(--borde-grueso) dashed var(--color-bosque-700);
+    }
+}
+
+/* ==========================================================================
+   MOLÉCULA: Fila de agenda del proveedor
+   ========================================================================== */
+.agenda {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.fila-agenda {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    align-items: center;
+    gap: var(--espacio-3) var(--espacio-4);
+    padding: var(--espacio-4);
+    background: var(--color-neutral-0);
+    border: var(--borde-fino) solid var(--color-neutral-300);
+    border-radius: var(--radio-md);
+}
+
+.fila-agenda__hora {
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-titulo);
+    font-size: 1.125rem;
+    color: var(--color-bosque-900);
+    font-variant-numeric: tabular-nums;
+}
+
+.fila-agenda__cita strong {
+    display: block;
+}
+
+.fila-agenda__cita span {
+    font-size: 0.875rem;
+    color: var(--color-neutral-700);
+}
+
+.fila-agenda__acciones {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espacio-2);
+}
+
+@media (min-width: 1280px) {
+    .fila-agenda {
+        grid-template-columns: 96px minmax(0, 1fr) auto;
+    }
+
+    .fila-agenda__acciones {
+        grid-column: auto;
+        justify-content: flex-end;
+    }
+}
+
+/* ==========================================================================
+   Aviso de confirmación (feedback inmediato)
+   ========================================================================== */
+.aviso {
+    position: fixed;
+    left: 50%;
+    bottom: var(--espacio-6);
+    z-index: 50;
+    max-width: calc(100% - 2 * var(--espacio-4));
+    padding: var(--espacio-3) var(--espacio-6);
+    background: var(--color-bosque-900);
+    color: var(--color-texto-sobre-bosque);
+    border-radius: var(--radio-md);
+    box-shadow: var(--sombra-flotante);
+    font-weight: var(--peso-boton);
+    transform: translate(-50%, 16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.aviso.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}

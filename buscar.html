@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar servicios | PetCare</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Fraunces:opsz,wght@9..144,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/pantallas.css">
+</head>
+
+<body>
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+    <!-- ORGANISMO: Barra de navegación (rol propietario) -->
+    <header class="barra">
+        <div class="contenedor barra__interior">
+            <a class="logo" href="propietario.html" aria-label="PetCare, ir al inicio">
+                <span class="logo__simbolo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="4" r="2" />
+                        <circle cx="18" cy="8" r="2" />
+                        <circle cx="20" cy="16" r="2" />
+                        <path
+                            d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z" />
+                    </svg>
+                </span>
+                <span class="logo__nombre">PetCare</span>
+            </a>
+
+            <button class="barra__boton-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    aria-hidden="true">
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+                Menú
+            </button>
+
+            <nav class="barra__menu" id="menu-principal" aria-label="Principal">
+                <a href="propietario.html">Inicio</a>
+                <a href="buscar.html" aria-current="page">Buscar servicios</a>
+                <a href="propietario.html#reservas">Mis reservas</a>
+                <a href="propietario.html#mascotas">Mis mascotas</a>
+                <a href="index.html">Cerrar sesión</a>
+            </nav>
+
+            <span class="barra__usuario">Laura G.</span>
+        </div>
+    </header>
+
+    <main id="contenido" class="contenedor pagina">
+
+        <div class="encabezado-pagina">
+            <div class="encabezado-pagina__textos">
+                <h1>Buscar servicios</h1>
+                <p class="texto-secundario">Encuentra proveedores por categoría y reserva en el horario que te sirva.
+                </p>
+            </div>
+        </div>
+
+        <div class="cuadricula">
+
+            <!-- Columna principal: búsqueda, filtros y resultados -->
+            <div class="col-principal contenido">
+
+                <form class="buscador" id="form-busqueda" role="search">
+                    <div class="campo">
+                        <label class="campo__etiqueta" for="busqueda">Buscar por nombre o barrio</label>
+                        <input class="campo__entrada" type="search" id="busqueda" name="busqueda"
+                            placeholder="Ej.: Chapinero o Huellitas" autocomplete="off">
+                    </div>
+                    <button class="boton boton--principal" type="submit">Buscar</button>
+                </form>
+
+                <!-- ÁTOMO: Filtros de categoría (HU003) -->
+                <div class="filtros" role="group" aria-label="Filtrar por categoría">
+                    <button class="filtro" type="button" data-categoria="todos" aria-pressed="true">Todos</button>
+                    <button class="filtro" type="button" data-categoria="veterinaria"
+                        aria-pressed="false">Veterinaria</button>
+                    <button class="filtro" type="button" data-categoria="peluqueria" aria-pressed="false">Peluquería y
+                        estética</button>
+                    <button class="filtro" type="button" data-categoria="paseos" aria-pressed="false">Paseos</button>
+                    <button class="filtro" type="button" data-categoria="guarderia"
+                        aria-pressed="false">Guardería</button>
+                </div>
+
+                <!-- MOLÉCULA: Tarjetas de proveedor -->
+                <section class="seccion" aria-labelledby="titulo-resultados">
+                    <h2 id="titulo-resultados">Proveedores disponibles</h2>
+
+                    <ul class="lista" data-filtrable>
+                        <li class="tarjeta-proveedor" data-categoria="paseos">
+                            <span class="tarjeta-proveedor__foto" aria-hidden="true">AR</span>
+                            <div>
+                                <p class="tarjeta-proveedor__categoria">Paseos</p>
+                                <p class="tarjeta-proveedor__nombre">Andrés Rojas</p>
+                                <p class="tarjeta-proveedor__detalle">Chapinero · Desde $25.000 la hora · Calificación
+                                    4,8</p>
+                            </div>
+                            <a class="boton boton--secundario boton--pequeno" href="#reserva">Ver horarios</a>
+                        </li>
+
+                        <li class="tarjeta-proveedor" data-categoria="veterinaria">
+                            <span class="tarjeta-proveedor__foto" aria-hidden="true">VH</span>
+                            <div>
+                                <p class="tarjeta-proveedor__categoria">Veterinaria</p>
+                                <p class="tarjeta-proveedor__nombre">Clínica Veterinaria Huellitas</p>
+                                <p class="tarjeta-proveedor__detalle">Usaquén · Consulta desde $60.000 · Calificación
+                                    4,9</p>
+                            </div>
+                            <a class="boton boton--secundario boton--pequeno" href="#reserva">Ver horarios</a>
+                        </li>
+
+                        <li class="tarjeta-proveedor" data-categoria="peluqueria">
+                            <span class="tarjeta-proveedor__foto" aria-hidden="true">CP</span>
+                            <div>
+                                <p class="tarjeta-proveedor__categoria">Peluquería y estética</p>
+                                <p class="tarjeta-proveedor__nombre">Peluquería Canina Patitas</p>
+                                <p class="tarjeta-proveedor__detalle">Teusaquillo · Baño desde $45.000 · Calificación
+                                    4,6</p>
+                            </div>
+                            <a class="boton boton--secundario boton--pequeno" href="#reserva">Ver horarios</a>
+                        </li>
+
+                        <li class="tarjeta-proveedor" data-categoria="veterinaria">
+                            <span class="tarjeta-proveedor__foto" aria-hidden="true">CT</span>
+                            <div>
+                                <p class="tarjeta-proveedor__categoria">Veterinaria</p>
+                                <p class="tarjeta-proveedor__nombre">Dra. Camila Torres, a domicilio</p>
+                                <p class="tarjeta-proveedor__detalle">Suba · Desde $80.000 · Calificación 4,7</p>
+                            </div>
+                            <a class="boton boton--secundario boton--pequeno" href="#reserva">Ver horarios</a>
+                        </li>
+
+                        <li class="tarjeta-proveedor" data-categoria="paseos">
+                            <span class="tarjeta-proveedor__foto" aria-hidden="true">PM</span>
+                            <div>
+                                <p class="tarjeta-proveedor__categoria">Paseos</p>
+                                <p class="tarjeta-proveedor__nombre">Paola Méndez</p>
+                                <p class="tarjeta-proveedor__detalle">Usaquén · Desde $22.000 la hora · Calificación 4,5
+                                </p>
+                            </div>
+                            <a class="boton boton--secundario boton--pequeno" href="#reserva">Ver horarios</a>
+                        </li>
+                    </ul>
+
+                    <!-- HU003, escenario "Sin resultados" -->
+                    <p class="mensaje-vacio" id="sin-resultados" hidden>
+                        No hay servicios disponibles con ese filtro por ahora. Prueba con otra categoría u otra
+                        búsqueda.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Columna lateral: reserva (HU001) -->
+            <aside class="col-lateral contenido">
+                <section class="caja" id="reserva" aria-labelledby="titulo-reserva">
+                    <div>
+                        <h2 id="titulo-reserva">Reservar con Andrés Rojas</h2>
+                        <p class="texto-secundario">Paseo de 1 hora · $25.000</p>
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo__etiqueta" for="mascota">Mascota</label>
+                        <select class="campo__entrada" id="mascota" name="mascota">
+                            <option>Max</option>
+                            <option>Luna</option>
+                        </select>
+                    </div>
+
+                    <!-- ÁTOMO: Franjas horarias -->
+                    <div class="campo">
+                        <p class="campo__etiqueta" id="etiqueta-horarios">Horarios del sábado 31 de octubre</p>
+                        <div class="franjas" role="group" aria-labelledby="etiqueta-horarios">
+                            <button class="franja" type="button" disabled aria-label="7:00 a. m., ocupado">7:00 a.
+                                m.</button>
+                            <button class="franja" type="button" disabled aria-label="8:00 a. m., ocupado">8:00 a.
+                                m.</button>
+                            <button class="franja" type="button" aria-pressed="false">9:00 a. m.</button>
+                            <button class="franja" type="button" disabled aria-label="10:00 a. m., ocupado">10:00 a.
+                                m.</button>
+                            <button class="franja" type="button" aria-pressed="false">3:00 p. m.</button>
+                            <button class="franja" type="button" aria-pressed="false">4:00 p. m.</button>
+                        </div>
+                    </div>
+
+                    <button class="boton boton--principal boton--ancho" type="button"
+                        data-aviso="Solicitud enviada. Queda pendiente hasta que Andrés Rojas la acepte.">
+                        Solicitar reserva
+                    </button>
+                </section>
+            </aside>
+
+        </div>
+    </main>
+
+    <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

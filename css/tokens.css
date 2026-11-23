@@ -1,0 +1,125 @@
+/* ==========================================================================
+   PetCare - Tokens de diseño
+   Copia exacta de las variables del UI Kit en Figma
+   (archivo "PetCare - Actividad 2", página UIKit).
+   Los nombres coinciden con la sintaxis de código definida en cada variable
+   de Figma. NO cambiar valores aquí sin cambiarlos también en Figma.
+   ========================================================================== */
+
+:root {
+    /* ---------- Color: marca ---------- */
+    --color-bosque-900: #0E3B2E;
+    /* Barra superior, fondos de marca, títulos */
+    --color-bosque-700: #14503E;
+    /* Hover del botón principal */
+    --color-hoja-700: #2E7D57;
+    /* Botón principal (texto blanco, 5,0:1) */
+    --color-hoja-500: #5FBF8A;
+    /* Acento sobre verde bosque (5,5:1) */
+    --color-menta-100: #DDEFE4;
+    /* Fondos suaves, hover de botón secundario */
+    --color-pelota-500: #FFD23F;
+    /* Detalle decorativo; texto oscuro encima */
+
+    /* ---------- Color: texto, fondos y bordes ---------- */
+    --color-tinta-900: #13261F;
+    /* Texto principal (14,3:1 sobre fondo claro) */
+    --color-neutral-700: #4E5C56;
+    /* Texto secundario (7,0:1 sobre blanco) */
+    --color-neutral-500: #5A6761;
+    /* Placeholders y texto deshabilitado */
+    --color-neutral-300: #D9DED8;
+    /* Bordes en reposo */
+    --color-neutral-100: #ECEFEA;
+    /* Fondos de campos deshabilitados */
+    --color-fondo-claro: #F5F3EE;
+    /* Fondo de las pantallas */
+    --color-neutral-0: #FFFFFF;
+    /* Tarjetas y superficies */
+    --color-texto-sobre-bosque: #EAF3EE;
+    /* Texto sobre verde bosque (11,0:1) */
+
+    /* ---------- Color: huellas del historial ---------- */
+    --color-huella-violeta: #4B3AA8;
+    --color-huella-roja: #B3261E;
+    /* Igual a estado-error */
+
+    /* ---------- Color: estados ---------- */
+    --color-estado-exito: #2F7D4F;
+    /* Atendida, confirmación */
+    --color-estado-error: #B3261E;
+    /* Error, rechazada */
+    --color-estado-alerta: #B45309;
+    /* Pendiente */
+    --color-estado-info: #1D4ED8;
+
+    /* ---------- Tipografía ---------- */
+    --fuente-titulos: "Fraunces", Georgia, "Times New Roman", serif;
+    --fuente-texto: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    /* Escala (máximo 3 niveles + botón), igual que los estilos de texto de Figma */
+    --texto-titulo: 2.5rem;
+    /* 40 px, Fraunces SemiBold, interlineado 44 px */
+    --interlinea-titulo: 1.1;
+    --texto-subtitulo: 1.5rem;
+    /* 24 px, Fraunces SemiBold, interlineado 30 px */
+    --interlinea-subtitulo: 1.25;
+    --texto-cuerpo: 1rem;
+    /* 16 px, Archivo Regular, interlineado 24 px */
+    --interlinea-cuerpo: 1.5;
+    --texto-boton: 1rem;
+    /* 16 px, Archivo SemiBold */
+    --peso-titulo: 600;
+    --peso-boton: 600;
+
+    /* ---------- Espaciado (escala de 4 px) ---------- */
+    --espacio-1: 4px;
+    --espacio-2: 8px;
+    --espacio-3: 12px;
+    --espacio-4: 16px;
+    --espacio-6: 24px;
+    --espacio-8: 32px;
+    --espacio-12: 48px;
+    --espacio-16: 64px;
+
+    /* ---------- Bordes redondeados ---------- */
+    --radio-sm: 8px;
+    /* Campos de texto, franjas horarias */
+    --radio-md: 12px;
+    /* Tarjetas */
+    --radio-lg: 20px;
+    /* Secciones y modales */
+    --radio-pildora: 999px;
+    /* Botones, menú y filtros */
+
+    /* ---------- Grosor de borde ---------- */
+    --borde-fino: 1px;
+    /* Reposo */
+    --borde-grueso: 2px;
+    /* Campo activo, elemento seleccionado, botones con contorno */
+
+    /* ---------- Sombras (estilos de efecto de Figma) ---------- */
+    --sombra-suave: 0 4px 12px rgba(14, 59, 46, 0.08);
+    --sombra-flotante: 0 16px 32px -12px rgba(14, 59, 46, 0.18);
+
+    /* ---------- Cuadrícula (layouts genéricos) ---------- */
+    /* Celular (base): 4 columnas, margen 16 px, separación 16 px
+     Tablet (>= 768 px): 8 columnas, margen 32 px, separación 24 px
+     Escritorio (>= 1280 px): 12 columnas, margen 80 px, separación 24 px */
+    --margen-pagina: 16px;
+    --separacion-columnas: 16px;
+    --ancho-maximo: 1280px;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --margen-pagina: 32px;
+        --separacion-columnas: 24px;
+    }
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --margen-pagina: 80px;
+    }
+}

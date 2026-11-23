@@ -1,0 +1,200 @@
+/* ==========================================================================
+   PetCare - Estilos base
+   Reglas generales que usan todas las pantallas. Todo valor sale de tokens.css.
+   ========================================================================== */
+
+/* ---------- Reinicio mínimo ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-fondo-claro);
+    color: var(--color-tinta-900);
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-cuerpo);
+    line-height: var(--interlinea-cuerpo);
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+a {
+    color: var(--color-hoja-700);
+}
+
+/* ---------- Jerarquía tipográfica (3 niveles) ---------- */
+h1,
+.titulo {
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-titulo);
+    font-size: 2rem;
+    /* 32 px en celular */
+    line-height: var(--interlinea-titulo);
+    letter-spacing: -0.015em;
+    color: var(--color-bosque-900);
+    text-wrap: balance;
+}
+
+h2,
+.subtitulo {
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-titulo);
+    font-size: 1.25rem;
+    /* 20 px en celular */
+    line-height: var(--interlinea-subtitulo);
+    color: var(--color-bosque-900);
+    text-wrap: balance;
+}
+
+p {
+    margin: 0;
+}
+
+.texto-secundario {
+    color: var(--color-neutral-700);
+}
+
+@media (min-width: 768px) {
+
+    h1,
+    .titulo {
+        font-size: var(--texto-titulo);
+        /* 40 px */
+    }
+
+    h2,
+    .subtitulo {
+        font-size: var(--texto-subtitulo);
+        /* 24 px */
+    }
+}
+
+/* ---------- Contenedor con los márgenes de cada tamaño ---------- */
+.contenedor {
+    width: 100%;
+    max-width: var(--ancho-maximo);
+    margin-inline: auto;
+    padding-inline: var(--margen-pagina);
+}
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-6);
+    padding-block: var(--espacio-6) var(--espacio-12);
+}
+
+@media (min-width: 768px) {
+    .contenido {
+        padding-block: var(--espacio-8) var(--espacio-12);
+    }
+}
+
+/* ---------- Cuadrícula: 4 / 8 / 12 columnas ---------- */
+.cuadricula {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--separacion-columnas);
+}
+
+.cuadricula>* {
+    grid-column: 1 / -1;
+    /* En celular, todo ocupa el ancho completo */
+    min-width: 0;
+}
+
+@media (min-width: 768px) {
+    .cuadricula {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+
+    .col-principal {
+        grid-column: span 5;
+        /* Tablet: 5 de 8 columnas */
+    }
+
+    .col-lateral {
+        grid-column: span 3;
+        /* Tablet: 3 de 8 columnas */
+    }
+}
+
+@media (min-width: 1280px) {
+    .cuadricula {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .col-principal {
+        grid-column: span 8;
+        /* Escritorio: 8 de 12 columnas */
+    }
+
+    .col-lateral {
+        grid-column: span 4;
+        /* Escritorio: 4 de 12 columnas */
+    }
+}
+
+/* ---------- Accesibilidad ---------- */
+:focus-visible {
+    outline: 3px solid var(--color-hoja-500);
+    outline-offset: 2px;
+}
+
+.solo-lector {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.saltar-contenido {
+    position: absolute;
+    left: var(--espacio-4);
+    top: -100px;
+    z-index: 100;
+    padding: var(--espacio-2) var(--espacio-4);
+    background: var(--color-neutral-0);
+    border-radius: var(--radio-sm);
+}
+
+.saltar-contenido:focus {
+    top: var(--espacio-4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
