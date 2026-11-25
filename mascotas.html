@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis mascotas | PetCare</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Fraunces:opsz,wght@9..144,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/pantallas.css">
+    <!-- HU2: estilos propios de esta pantalla -->
+    <link rel="stylesheet" href="css/mascotas.css">
+</head>
+
+<body>
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+    <!-- ORGANISMO: Barra de navegación (rol propietario) -->
+    <header class="barra">
+        <div class="contenedor barra__interior">
+            <a class="logo" href="propietario.html" aria-label="PetCare, ir al inicio">
+                <span class="logo__simbolo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="4" r="2" />
+                        <circle cx="18" cy="8" r="2" />
+                        <circle cx="20" cy="16" r="2" />
+                        <path
+                            d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z" />
+                    </svg>
+                </span>
+                <span class="logo__nombre">PetCare</span>
+            </a>
+
+            <button class="barra__boton-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    aria-hidden="true">
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+                Menú
+            </button>
+
+            <nav class="barra__menu" id="menu-principal" aria-label="Principal">
+                <a href="propietario.html">Inicio</a>
+                <a href="buscar.html">Buscar servicios</a>
+                <a href="propietario.html#reservas">Mis reservas</a>
+                <a href="mascotas.html" aria-current="page">Mis mascotas</a>
+                <a href="index.html">Cerrar sesión</a>
+            </nav>
+
+            <span class="barra__usuario">Laura G.</span>
+        </div>
+    </header>
+
+    <main id="contenido" class="contenedor pagina">
+
+        <div class="encabezado-pagina">
+            <div class="encabezado-pagina__textos">
+                <p class="texto-secundario">Tus compañeros de cuatro patas</p>
+                <h1>Mis mascotas</h1>
+            </div>
+        </div>
+
+        <div class="cuadricula">
+
+            <!-- Columna principal: lista de mascotas -->
+            <div class="col-principal contenido">
+                <section class="seccion" aria-labelledby="titulo-lista">
+                    <h2 id="titulo-lista">Mascotas registradas</h2>
+
+                    <ul class="lista" id="lista-mascotas"></ul>
+
+                    <p class="texto-secundario" id="sin-mascotas" hidden>
+                        Aún no tienes mascotas registradas. Agrega la primera con el formulario.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Columna lateral: formulario para agregar o editar -->
+            <aside class="col-lateral contenido" aria-labelledby="titulo-form">
+                <section class="caja">
+                    <h2 id="titulo-form">Agregar mascota</h2>
+
+                    <form id="form-mascota" class="form-mascota" novalidate>
+
+                        <div class="campo" id="campo-nombre">
+                            <label class="campo__etiqueta" for="nombre">Nombre</label>
+                            <input class="campo__entrada" type="text" id="nombre" name="nombre" maxlength="30"
+                                placeholder="Ej. Max" aria-describedby="error-nombre" required>
+                            <p class="campo__error" id="error-nombre" hidden></p>
+                        </div>
+
+                        <div class="campo" id="campo-especie">
+                            <label class="campo__etiqueta" for="especie">Especie</label>
+                            <select class="campo__entrada" id="especie" name="especie"
+                                aria-describedby="error-especie" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Perro">Perro</option>
+                                <option value="Gato">Gato</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                            <p class="campo__error" id="error-especie" hidden></p>
+                        </div>
+
+                        <div class="campo" id="campo-raza">
+                            <label class="campo__etiqueta" for="raza">Raza (opcional)</label>
+                            <input class="campo__entrada" type="text" id="raza" name="raza" maxlength="40"
+                                placeholder="Ej. golden retriever, criolla" aria-describedby="error-raza">
+                            <p class="campo__error" id="error-raza" hidden></p>
+                        </div>
+
+                        <div class="campo" id="campo-edad">
+                            <label class="campo__etiqueta" for="edad">Edad en años</label>
+                            <input class="campo__entrada" type="number" id="edad" name="edad" min="0" max="30"
+                                step="1" inputmode="numeric" placeholder="Ej. 4" aria-describedby="error-edad"
+                                required>
+                            <p class="campo__error" id="error-edad" hidden></p>
+                        </div>
+
+                        <button class="boton boton--principal boton--ancho" type="submit" id="boton-guardar">
+                            Guardar mascota
+                        </button>
+                        <button class="boton boton--secundario boton--ancho" type="button" id="boton-cancelar" hidden>
+                            Cancelar edición
+                        </button>
+                    </form>
+                </section>
+            </aside>
+
+        </div>
+    </main>
+
+    <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+    <!-- app.js: menú del celular y avisos. mascotas.js: toda la lógica de la HU2 -->
+    <script src="js/app.js"></script>
+    <script src="js/mascotas.js"></script>
+</body>
+
+</html>
