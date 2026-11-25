@@ -52,7 +52,7 @@
                 <a href="propietario.html" aria-current="page">Inicio</a>
                 <a href="buscar.html">Buscar servicios</a>
                 <a href="#reservas">Mis reservas</a>
-                <a href="#mascotas">Mis mascotas</a>
+                <a href="mascotas.html">Mis mascotas</a>
                 <a href="index.html">Cerrar sesión</a>
             </nav>
 
@@ -110,7 +110,7 @@
                             <span>Cita pendiente</span>
                         </div>
                         <div class="resumen__dato">
-                            <span class="resumen__numero">2</span>
+                            <span class="resumen__numero" id="total-mascotas">2</span>
                             <span>Mascotas registradas</span>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
                 <section class="seccion">
                     <h2 id="titulo-mascotas">Mis mascotas</h2>
 
-                    <ul class="lista">
+                    <ul class="lista" id="lista-mascotas-inicio">
                         <li class="tarjeta-mascota">
                             <div class="placa" aria-hidden="true">MAX</div>
                             <div class="tarjeta-mascota__info">
@@ -211,17 +211,15 @@
                         </li>
                         <li class="tarjeta-mascota">
                             <div class="placa" aria-hidden="true">LUNA</div>
-                            <div class="tarjeta-mascota__info">
+                            <div class="tarjeta-mascota__info"> 
                                 <strong>Luna</strong>
                                 <p class="texto-secundario">Gata, criolla, 2 años</p>
                             </div>
                         </li>
                     </ul>
-
-                    <button class="boton boton--secundario boton--ancho" type="button"
-                        data-aviso="El registro de mascotas estará disponible en la siguiente versión.">
+                    <a class="boton boton--secundario boton--ancho" href="mascotas.html">
                         Agregar mascota
-                    </button>
+                    </a>
                 </section>
             </aside>
 
@@ -231,6 +229,7 @@
     <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 
     <script src="js/app.js"></script>
+    <script src="js/mascotas.js"></script>
 </body>
 
 </html>
