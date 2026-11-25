@@ -115,14 +115,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-        // Abrir la ventana modal.
-    btnModificar.addEventListener("click", () => {
+    // Abrir la ventana modal.
+    function abrirModalHorarios() {
         generarFormulario();
 
         error.hidden = true;
         modal.showModal();
-    });
+    }
 
+    // Abrir desde el botón Modificar horarios.
+    btnModificar.addEventListener("click", abrirModalHorarios);
+
+    // Abrir desde el menú de navegación.
+    const navHorarios = document.getElementById("nav-horarios");
+
+    if (navHorarios) {
+        navHorarios.addEventListener("click", evento => {
+            evento.preventDefault();
+            abrirModalHorarios();
+        });
+    }
     // Cancelar sin guardar los cambios.
     btnCancelar.addEventListener("click", () => {
         modal.close();
