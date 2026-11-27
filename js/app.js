@@ -92,7 +92,14 @@
                 return;
             }
 
-            const cuenta = CUENTAS[correo];
+            // HU1: también acepta las cuentas creadas en registro.html
+            let registrados = [];
+            try { registrados = JSON.parse(localStorage.getItem('petcare_usuarios')) || []; } catch (e) { registrados = []; }
+            const registrado = registrados.find(function (u) { return u.correo === correo; });
+            const cuenta = CUENTAS[correo] || (registrado && {
+                clave: registrado.clave,
+                destino: registrado.rol === 'proveedor' ? 'agenda.html' : 'propietario.html'
+            });
             if (!cuenta || cuenta.clave !== clave) {
                 marcarError('campo-clave', 'El correo o la contraseña no coinciden. Revisa los datos e intenta de nuevo.');
                 formAcceso.clave.focus();
