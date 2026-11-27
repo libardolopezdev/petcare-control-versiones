@@ -1,0 +1,196 @@
+/* ==========================================================================
+   PetCare - HU5: Calificaciones y comentarios
+   ========================================================================== */
+
+/* Ventana modal */
+.modal-calificacion {
+    box-sizing: border-box;
+    width: calc(100% - 32px);
+    max-width: 520px;
+    max-height: 90vh;
+    margin: auto;
+    padding: var(--espacio-6);
+    background: var(--color-neutral-0);
+    color: var(--color-tinta-900);
+    border: var(--borde-fino) solid var(--color-neutral-300);
+    border-radius: var(--radio-md);
+    box-shadow: var(--sombra-flotante);
+    overflow-y: auto;
+}
+
+.modal-calificacion::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.modal-calificacion form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-4);
+}
+
+.modal-calificacion h2 {
+    margin: 0;
+    color: var(--color-bosque-900);
+}
+
+#detalle-calificacion {
+    margin: 0;
+    padding-bottom: var(--espacio-4);
+    border-bottom: 1px solid var(--color-neutral-300);
+}
+
+/* Selección de calificación */
+.calificacion-campo {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.calificacion-campo legend {
+    font-weight: var(--peso-boton);
+    margin-bottom: var(--espacio-3);
+}
+
+.calificacion-estrellas {
+    display: flex;
+    justify-content: center;
+    gap: var(--espacio-2);
+}
+
+.calificacion-estrellas button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: var(--radio-sm);
+    color: var(--color-neutral-500);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.15s ease,
+                background-color 0.15s ease;
+}
+
+.calificacion-estrellas button:hover {
+    background: var(--color-menta-100);
+}
+
+.calificacion-estrellas button.activa {
+    color: #b77900;
+}
+
+.calificacion-estrellas button:focus-visible {
+    outline: 2px solid var(--color-hoja-700);
+    outline-offset: 2px;
+}
+
+#texto-calificacion {
+    margin-top: var(--espacio-2);
+    text-align: center;
+    font-weight: var(--peso-boton);
+}
+
+/* Campo de comentarios */
+#comentario-calificacion {
+    box-sizing: border-box;
+    min-height: 110px;
+    resize: vertical;
+    font: inherit;
+}
+
+#contador-comentario {
+    text-align: right;
+    font-size: 0.8125rem;
+}
+
+#error-calificacion {
+    margin: 0;
+}
+
+#error-calificacion:empty {
+    display: none;
+}
+
+/* Botones de la ventana modal */
+.calificacion-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--espacio-3);
+}
+
+/* Calificación visible en el historial */
+.calificacion-resumen {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-2);
+    width: 100%;
+    min-width: 0;
+    padding-top: var(--espacio-3);
+    margin-top: var(--espacio-2);
+    border-top: 1px solid var(--color-neutral-300);
+}
+
+.calificacion-resumen__estrellas {
+    color: #b77900;
+    font-size: 1.25rem;
+    font-weight: var(--peso-boton);
+    letter-spacing: 2px;
+}
+
+.calificacion-resumen__comentario {
+    margin: 0;
+    color: var(--color-tinta-900);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 0.875rem;
+}
+
+.calificacion-ticket-acciones {
+    min-width: 0;
+}
+
+.calificacion-ticket-acciones .boton {
+    width: 100%;
+}
+
+/* Adaptación para tablet y escritorio */
+@media (min-width: 768px) {
+    .calificacion-ticket-acciones {
+        min-width: 190px;
+    }
+}
+
+/* Adaptación para dispositivos móviles */
+@media (max-width: 480px) {
+    .modal-calificacion {
+        padding: var(--espacio-4);
+    }
+
+    .calificacion-estrellas {
+        gap: var(--espacio-1);
+    }
+
+    .calificacion-estrellas button {
+        width: 44px;
+        height: 44px;
+        font-size: 1.75rem;
+    }
+
+    .calificacion-acciones {
+        flex-direction: column-reverse;
+    }
+
+    .calificacion-acciones .boton {
+        width: 100%;
+    }
+    
+    .calificacion-resumen[hidden] {
+    display: none;
+}
+}

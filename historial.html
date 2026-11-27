@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de servicios | PetCare</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Fraunces:opsz,wght@9..144,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/pantallas.css">
+    <link rel="stylesheet" href="css/calificaciones.css">
+</head>
+
+<body>
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+    <!-- ORGANISMO: Barra de navegación (rol propietario) -->
+    <header class="barra">
+        <div class="contenedor barra__interior">
+            <a class="logo" href="propietario.html" aria-label="PetCare, ir al inicio">
+                <span class="logo__simbolo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="4" r="2" />
+                        <circle cx="18" cy="8" r="2" />
+                        <circle cx="20" cy="16" r="2" />
+                        <path
+                            d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z" />
+                    </svg>
+                </span>
+                <span class="logo__nombre">PetCare</span>
+            </a>
+
+            <button class="barra__boton-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    aria-hidden="true">
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+                Menú
+            </button>
+
+            <nav class="barra__menu" id="menu-principal" aria-label="Principal">
+                <a href="propietario.html">Inicio</a>
+                <a href="buscar.html">Buscar servicios</a>
+                <a href="propietario.html#reservas">Mis reservas</a>
+                <a href="propietario.html#mascotas">Mis mascotas</a>
+                <a href="historial.html" aria-current="page">Historial</a>
+                <a href="index.html">Cerrar sesión</a>
+            </nav>
+
+            <span class="barra__usuario">Laura G.</span>
+        </div>
+    </header>
+
+    <main id="contenido" class="contenedor pagina">
+        <div class="encabezado-pagina">
+            <div class="encabezado-pagina__textos">
+                <h1>Historial de servicios</h1>
+                <p class="texto-secundario">Consulta los servicios completados de tus mascotas.</p>
+            </div>
+            <a class="boton boton--secundario" href="propietario.html">Volver al inicio</a>
+        </div>
+        <div class="contenido">
+            <section class="seccion caja" aria-labelledby="titulo-filtros-historial">
+                <h2 id="titulo-filtros-historial">Filtrar por tipo de servicio</h2>
+                <div class="filtros" id="filtros-historial" role="group" aria-label="Tipo de servicio">
+                    <button type="button" class="filtro" data-servicio="todos" aria-pressed="true">Todos</button>
+                    <button type="button" class="filtro" data-servicio="Paseo" aria-pressed="false">Paseos</button>
+                    <button type="button" class="filtro" data-servicio="Baño" aria-pressed="false">Baños</button>
+                    <button type="button" class="filtro" data-servicio="Consulta" aria-pressed="false">Consultas</button>
+                </div>
+            </section>
+            <section class="seccion" aria-labelledby="titulo-servicios-historial">
+                <h2 id="titulo-servicios-historial">Servicios recibidos</h2>
+                <p class="texto-secundario" id="mensaje-historial" role="status" aria-live="polite"></p>
+                <ul class="lista" id="lista-historial"></ul>
+            </section>
+        </div>
+    </main>
+    <!-- HU5: Modal de calificaciones y comentarios -->
+<dialog id="modal-calificacion"
+        class="modal-calificacion"
+        aria-labelledby="titulo-calificacion">
+
+    <form id="form-calificacion">
+
+        <h2 id="titulo-calificacion">Calificar servicio</h2>
+
+        <p id="detalle-calificacion"
+           class="texto-secundario"></p>
+
+        <fieldset class="calificacion-campo">
+            <legend>¿Cómo fue tu experiencia?</legend>
+
+            <div class="calificacion-estrellas"
+                 id="estrellas-calificacion">
+
+                <button type="button" data-valor="1"
+                        aria-label="1 estrella"
+                        aria-pressed="false">★</button>
+
+                <button type="button" data-valor="2"
+                        aria-label="2 estrellas"
+                        aria-pressed="false">★</button>
+
+                <button type="button" data-valor="3"
+                        aria-label="3 estrellas"
+                        aria-pressed="false">★</button>
+
+                <button type="button" data-valor="4"
+                        aria-label="4 estrellas"
+                        aria-pressed="false">★</button>
+
+                <button type="button" data-valor="5"
+                        aria-label="5 estrellas"
+                        aria-pressed="false">★</button>
+
+            </div>
+
+            <p id="texto-calificacion"
+               class="texto-secundario"
+               aria-live="polite">
+                Selecciona una calificación.
+            </p>
+        </fieldset>
+
+        <div class="campo">
+            <label class="campo__etiqueta"
+                   for="comentario-calificacion">
+                Comentario (opcional)
+            </label>
+
+            <textarea id="comentario-calificacion"
+                      class="campo__entrada"
+                      rows="4"
+                      maxlength="500"
+                      placeholder="Cuéntanos cómo fue el servicio..."></textarea>
+
+            <span id="contador-comentario"
+                  class="texto-secundario">
+                0/500 caracteres
+            </span>
+        </div>
+
+        <p id="error-calificacion"
+           class="campo__error"
+           role="alert"></p>
+
+        <div class="calificacion-acciones">
+
+            <button type="button"
+                    id="cancelar-calificacion"
+                    class="boton boton--secundario">
+                Cancelar
+            </button>
+
+            <button type="submit"
+                    class="boton boton--principal">
+                Guardar calificación
+            </button>
+
+        </div>
+
+    </form>
+</dialog>
+    <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+    <script src="js/app.js"></script>
+    <script src="js/calificaciones.js"></script>
+    <script src="js/historial.js"></script>
+</body>
+</html>
