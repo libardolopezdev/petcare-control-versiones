@@ -45,6 +45,12 @@
             elemento('span', 'Proveedor: ' + reserva.proveedor),
             elemento('span', 'Fecha: ' + reserva.fecha.split('-').reverse().join('/') + ' · Hora: ' + reserva.hora, 'texto-secundario'));
         articulo.append(datos);
+
+        // HU5: Integración de calificaciones y comentarios.
+        if (window.PetCareCalificaciones) {
+            window.PetCareCalificaciones.agregar(articulo, reserva);
+        }
+
         item.append(articulo);
         return item;
     }

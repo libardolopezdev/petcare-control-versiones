@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/pantallas.css">
+    <link rel="stylesheet" href="css/calificaciones.css">
 </head>
 
 <body>
@@ -86,8 +87,95 @@
             </section>
         </div>
     </main>
+    <!-- HU5: Modal de calificaciones y comentarios -->
+<dialog id="modal-calificacion"
+        class="modal-calificacion"
+        aria-labelledby="titulo-calificacion">
+
+    <form id="form-calificacion">
+
+        <h2 id="titulo-calificacion">Calificar servicio</h2>
+
+        <p id="detalle-calificacion"
+           class="texto-secundario"></p>
+
+        <fieldset class="calificacion-campo">
+            <legend>¿Cómo fue tu experiencia?</legend>
+
+            <div class="calificacion-estrellas"
+                 id="estrellas-calificacion">
+
+                <button type="button" data-valor="1"
+                        aria-label="1 estrella"
+                        aria-pressed="false">★</button>
+
+                <button type="button" data-valor="2"
+                        aria-label="2 estrellas"
+                        aria-pressed="false">★</button>
+
+                <button type="button" data-valor="3"
+                        aria-label="3 estrellas"
+                        aria-pressed="false">★</button>
+
+                <button type="button" data-valor="4"
+                        aria-label="4 estrellas"
+                        aria-pressed="false">★</button>
+
+                <button type="button" data-valor="5"
+                        aria-label="5 estrellas"
+                        aria-pressed="false">★</button>
+
+            </div>
+
+            <p id="texto-calificacion"
+               class="texto-secundario"
+               aria-live="polite">
+                Selecciona una calificación.
+            </p>
+        </fieldset>
+
+        <div class="campo">
+            <label class="campo__etiqueta"
+                   for="comentario-calificacion">
+                Comentario (opcional)
+            </label>
+
+            <textarea id="comentario-calificacion"
+                      class="campo__entrada"
+                      rows="4"
+                      maxlength="500"
+                      placeholder="Cuéntanos cómo fue el servicio..."></textarea>
+
+            <span id="contador-comentario"
+                  class="texto-secundario">
+                0/500 caracteres
+            </span>
+        </div>
+
+        <p id="error-calificacion"
+           class="campo__error"
+           role="alert"></p>
+
+        <div class="calificacion-acciones">
+
+            <button type="button"
+                    id="cancelar-calificacion"
+                    class="boton boton--secundario">
+                Cancelar
+            </button>
+
+            <button type="submit"
+                    class="boton boton--principal">
+                Guardar calificación
+            </button>
+
+        </div>
+
+    </form>
+</dialog>
     <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
     <script src="js/app.js"></script>
+    <script src="js/calificaciones.js"></script>
     <script src="js/historial.js"></script>
 </body>
 </html>
