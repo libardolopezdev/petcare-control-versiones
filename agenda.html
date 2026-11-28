@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/pantallas.css">
+    <link rel="stylesheet" href="css/horarios.css">
 </head>
 
 <body>
@@ -50,7 +51,7 @@
 
             <nav class="barra__menu" id="menu-principal" aria-label="Principal">
                 <a href="agenda.html" aria-current="page">Mi agenda</a>
-                <a href="#horarios">Mis horarios</a>
+                <a href="#horarios" id="nav-horarios">Mis horarios</a>
                 <a href="index.html">Cerrar sesión</a>
             </nav>
 
@@ -167,7 +168,7 @@
                         <p class="texto-secundario">Los propietarios solo pueden reservar dentro de estos bloques.</p>
                     </div>
 
-                    <ul class="lista">
+                    <ul class="lista" id="lista-horarios">
                         <li>
                             <strong>Lunes a viernes</strong><br>
                             <span class="texto-secundario">6:00 a. m. a 12:00 m.</span>
@@ -183,9 +184,33 @@
                     </ul>
 
                     <button class="boton boton--secundario boton--ancho" type="button"
-                        data-aviso="Cambios guardados. El calendario público ya está actualizado.">
+                        id="btn-modificar-horarios">
                         Modificar horarios
                     </button>
+                    <dialog id="modal-horarios" aria-labelledby="titulo-modal-horarios">
+                        <form id="form-horarios">
+                            <h3 id="titulo-modal-horarios">Editar horarios de atención</h3>
+
+                            <p class="texto-secundario">
+                                Configura los días y las horas en los que estás disponible.
+                            </p>
+
+                            <div id="campos-horarios"></div>
+
+                            <p id="error-horarios" role="alert" hidden></p>
+
+                            <div class="horarios-acciones">
+                                <button class="boton boton--principal" type="submit">
+                                Guardar horarios
+                                </button>
+
+                                <button class="boton boton--secundario" type="button"
+                                    id="btn-cancelar-horarios">
+                                Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </dialog>
                 </section>
             </aside>
 
@@ -195,6 +220,7 @@
     <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 
     <script src="js/app.js"></script>
+    <script src="js/horarios.js"></script>
 </body>
 
 </html>

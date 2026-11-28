@@ -1,0 +1,248 @@
+
+/* ==========================================
+   HU4 - Estilos de horarios del proveedor
+   ========================================== */
+
+/* Respetar los elementos ocultos */
+#form-horarios[hidden],
+#btn-modificar-horarios[hidden],
+#error-horarios[hidden] {
+    display: none !important;
+}
+
+/* Lista de horarios */
+#lista-horarios li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#lista-horarios li:last-child {
+    border-bottom: none;
+}
+
+#lista-horarios li span {
+    text-align: right;
+    font-size: 13px;
+    color: #52635d;
+}
+
+/* Formulario de edición */
+#form-horarios {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #dce5df;
+}
+
+#form-horarios h3 {
+    color: #103b30;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+#form-horarios > p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+/* Contenedor de los días */
+#campos-horarios {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Tarjeta individual de cada día */
+.horario-fila {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #f5f8f6;
+    border: 1px solid #dce5df;
+    border-radius: 10px;
+}
+
+.horario-fila > strong {
+    color: #103b30;
+    font-size: 13px;
+}
+
+/* Etiquetas */
+.horario-fila label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 12px;
+    color: #52635d;
+    min-width: 0;
+}
+
+/* Casilla de disponibilidad */
+.horario-fila .horario-estado {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.horario-estado input {
+    accent-color: #287b58;
+    cursor: pointer;
+}
+
+/* Campos de hora */
+.horario-fila input[type="time"] {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 8px 4px;
+    border: 1px solid #cbd8d0;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #103b30;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.horario-fila input[type="time"]:focus {
+    outline: 2px solid #287b58;
+    outline-offset: 1px;
+}
+
+.horario-fila input[type="time"]:disabled {
+    background: #e5e7eb;
+    color: #8b9690;
+    cursor: not-allowed;
+}
+
+/* Botones del formulario */
+.horarios-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.horarios-acciones .boton {
+    width: 100%;
+}
+
+/* Mensaje de validación */
+#error-horarios {
+    margin-top: 12px;
+    padding: 10px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    color: #b91c1c;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   HU4 - Ventana modal de horarios
+   ========================================== */
+
+#modal-horarios {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    box-sizing: border-box;
+    width: min(680px, calc(100% - 32px));
+    max-height: 90vh;
+    padding: 28px;
+    border: 1px solid #dce5df;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #103b30;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.20);
+    overflow-y: auto;
+}
+
+#modal-horarios::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Formulario dentro de la ventana modal */
+#modal-horarios #form-horarios {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#modal-horarios h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+#modal-horarios #campos-horarios {
+    gap: 8px;
+}
+
+/* Distribución horizontal de los horarios */
+#modal-horarios .horario-fila {
+    grid-template-columns: 1fr 1.1fr 1fr 1fr;
+    gap: 14px;
+    padding: 12px;
+}
+
+#modal-horarios .horario-estado {
+    justify-content: flex-start;
+}
+
+#modal-horarios .horario-fila input[type="time"] {
+    padding: 8px;
+    font-size: 13px;
+}
+
+/* Botones inferiores */
+#modal-horarios .horarios-acciones {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#modal-horarios .horarios-acciones .boton {
+    width: auto;
+}
+
+/* Evitar desplazamiento del fondo */
+body:has(#modal-horarios[open]) {
+    overflow: hidden;
+}
+
+/* Adaptación para dispositivos móviles */
+@media (max-width: 600px) {
+
+    #modal-horarios {
+        padding: 18px;
+    }
+
+    #modal-horarios h3 {
+        font-size: 18px;
+    }
+
+    #modal-horarios .horario-fila {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    #modal-horarios .horario-estado {
+        justify-content: flex-end;
+    }
+
+    #modal-horarios .horarios-acciones {
+        flex-direction: column;
+    }
+
+    #modal-horarios .horarios-acciones .boton {
+        width: 100%;
+    }
+}
